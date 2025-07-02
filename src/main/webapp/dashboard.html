@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User DashBoard - HelpDesk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fa;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .logout-btn {
+      color: white;
+      background: #dc3545;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .logout-btn:hover {
+      background: #b02a37;
+    }
+
+    nav {
+      background: #f0f0f0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>User DashBoard - HelpDesk</h1>
+    <a class="logout-btn" href="logout">Logout</a>
+  </header>
+
+  <nav>
+    <a href="addticket.html">Add Ticket</a>
+    <a href="mytickets.html">My Tickets</a>
+    <a href="faq.html">Frequently Asked Questions</a>
+    <a href="profile.html">View Profile</a>
+  </nav>
+
+  <div class="container">
+    <h2>Welcome to your DashBoard</h2>
+    <p>
+      Use the options above to manage your tickets. You can raise new complaints, track their status, and view your profile information.
+    </p>
+  </div>
+
+</body>
+</html>

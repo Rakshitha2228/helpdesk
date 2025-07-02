@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Assigned Tickets - HelpDesk</title>
+<style>
+  body { font-family: 'Poppins', sans-serif; margin: 2rem; }
+  table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+  th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+  th { background: #f2f2f2; }
+</style>
+</head>
+<body>
+  <h2>Assigned Tickets</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Subject</th>
+        <th>Status</th>
+        <th>Assigned To</th>
+      </tr>
+    </thead>
+    <tbody id="ticketsBody"></tbody>
+  </table>
+  <script>
+    fetch('getAssignedTickets')
+      .then(r => r.json())
+      .then(tickets => {
+        const tbody = document.getElementById('ticketsBody');
+        tickets.forEach(t => {
+          tbody.innerHTML += `<tr>
+            <td>${t.id}</td>
+            <td>${t.subject}</td>
+            <td>${t.status}</td>
+            <td>${t.assignedUser}</td>
+          </tr>`;
+        });
+      })
+      .catch(err => {
+        console.error('Failed to load tickets:', err);
+        alert('Failed to load assigned tickets.');
+      });
+  </script>
+</body>
+</html>

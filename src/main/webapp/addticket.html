@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Ticket - HelpDesk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Add New Ticket</h2>
+
+    <form id="ticketForm" autocomplete="off">
+        <label>Subject:</label>
+        <input type="text" name="subject" required>
+
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
+
+        <input type="hidden" name="userId" value="1"> <!-- Replace with actual userId -->
+
+        <input type="submit" value="Submit Ticket">
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        document.getElementById('ticketForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // prevent default form submission
+
+            const formData = new FormData(this);
+            const params = new URLSearchParams(formData);
+
+            fetch('addTicket', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: params
+            })
+            .then(res => res.json())
+            .then(data => {
+    const msgDiv = document.getElementById('message');
+    if (data.status === "success") {
+        msgDiv.style.color = "green";
+        msgDiv.textContent = "Ticket submitted successfully!";
+        document.getElementById('ticketForm').reset(); // clear form
+        // redirect to dashboard page after 1 second (optional)
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1000);
+    } else {
+        msgDiv.style.color = "red";
+        msgDiv.textContent = data.message || "Failed to submit ticket.";
+    }
+})
+
+            .catch(err => {
+                const msgDiv = document.getElementById('message');
+                msgDiv.style.color = "red";
+                msgDiv.textContent = "Error: " + err;
+            });
+        });
+    </script>
+</body>
+</html>

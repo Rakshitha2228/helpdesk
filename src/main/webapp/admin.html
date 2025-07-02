@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - HelpDesk</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fb;
+    }
+    header {
+      background: #2f3b52;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    nav {
+      background: #e8ecf4;
+      display: flex;
+      padding: 12px 32px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #2f3b52;
+      margin-right: 24px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #007bff;
+    }
+    .logout-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 32px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 24px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 20px;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 8px;
+    }
+    p {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Admin Dashboard - HelpDesk</h1>
+    <button class="logout-btn" onclick="location.href='logout'">Logout</button>
+  </header>
+
+  <nav>
+    <a href="alltickets.html">All Tickets</a>
+    <a href="users.html">Manage Users</a>
+    <a href="analytics.html">Analytics</a>
+    <a href="assignedtickets.html">View Assigned Tickets</a>
+    
+  </nav>
+
+  <div class="container">
+    <h2>Welcome, Admin!</h2>
+    <p>This is your HelpDesk admin dashboard. Use the navigation above to manage tickets, assign tasks, view analytics and manage users.</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Analytics - HelpDesk</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family:'Poppins',sans-serif; text-align:center; margin:2rem; }
+  canvas { max-width:600px; margin:auto; }
+</style>
+</head>
+<body>
+  <h2>Tickets Analytics</h2>
+  <canvas id="ticketChart"></canvas>
+  <script>
+    fetch('analytics')
+      .then(r=>r.json()).then(data=>{
+        new Chart(document.getElementById('ticketChart'),{
+          type:'bar',
+          data:{ labels:data.labels, datasets:[{label:'Tickets', data:data.counts, backgroundColor:'#3498db'}]},
+          options:{ responsive:true }
+        });
+      });
+  </script>
+</body>
+</html>

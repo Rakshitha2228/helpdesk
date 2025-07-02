@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Profile - HelpDesk</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 40px; }
+    h2 { text-align: center; color: #333; margin-bottom: 30px; }
+    .card {
+        max-width: 500px;
+        margin: auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .field { margin-bottom: 15px; }
+    .label { font-weight: bold; color: #555; }
+    .value { margin-top: 5px; }
+</style>
+</head>
+<body>
+
+<h2>My Profile</h2>
+
+<div class="card">
+    <div class="field">
+        <div class="label">Name:</div>
+        <div class="value" id="name"></div>
+    </div>
+    <div class="field">
+        <div class="label">Email:</div>
+        <div class="value" id="email"></div>
+    </div>
+</div>
+
+<script>
+fetch('profile')
+.then(res => res.json())
+.then(data => {
+    document.getElementById('name').textContent = data.name || 'N/A';
+    document.getElementById('email').textContent = data.email || 'N/A';
+})
+.catch(err => {
+    alert('Error loading profile: ' + err);
+});
+</script>
+
+
+</body>
+</html>

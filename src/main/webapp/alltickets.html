@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Tickets - HelpDesk</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin:0; background:#f5f7fa; }
+    table { width:90%; margin:2rem auto; border-collapse:collapse; background:white; }
+    th, td { padding:0.75rem; border:1px solid #ddd; text-align:left; }
+    th { background:#34495e; color:white; }
+    h2 { text-align:center; margin-top:2rem; }
+  </style>
+</head>
+<body>
+
+<a href="admin.html" 
+  style="
+    display: inline-block;
+    background-color: #4CAF50; 
+    color: white; 
+    text-decoration: none;
+    border: none; 
+    border-radius: 6px; 
+    padding: 0.5rem 1rem; 
+    margin: 1rem; 
+    font-size: 1rem; 
+    cursor: pointer;">
+  ← Back to Dashboard
+</a>
+
+  <h2>All Tickets</h2>
+  <table id="ticketsTable">
+    <tr><th>ID</th><th>Subject</th><th>Status</th><th>User</th><th>Actions</th></tr>
+    <!-- rows will be populated by servlet data -->
+  </table>
+  <script>
+    fetch('viewAllTickets') // Servlet URL
+      .then(response => response.json())
+      .then(tickets => {
+        const table = document.getElementById('ticketsTable');
+        tickets.forEach(t => {
+          const row = `<tr>
+            <td>${t.id}</td>
+            <td>${t.subject}</td>
+            <td>${t.status}</td>
+            <td>${t.userName}</td>
+            <td><a href="assign.html?ticketId=${t.id}">Assign</a></td>
+          </tr>`;
+          table.innerHTML += row;
+        });
+      });
+  </script>
+</body>
+</html>

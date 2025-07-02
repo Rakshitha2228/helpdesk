@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Assign Ticket - HelpDesk</title>
+<style>
+  body { font-family: 'Poppins', sans-serif; margin:2rem; }
+  label, select, button { display:block; margin:1rem 0; }
+</style>
+</head>
+<body>
+  <h2>Assign Ticket</h2>
+  <div id="ticketInfo"></div>
+  <form action="assignTicket" method="post">
+    <input type="hidden" name="ticketId" value="" id="ticketId" />
+    <label for="assignee">Assign to technician:</label>
+    <select name="assigneeId" id="assignee">
+      <option>Loading technicians...</option>
+    </select>
+    <button type="submit">Assign</button>
+  </form>
+  <div id="message"></div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const ticketId = urlParams.get('ticketId');
+    if (ticketId) {
+      document.getElementById('ticketId').value = ticketId;
+      document.getElementById('ticketInfo').innerText = "Ticket ID: " + ticketId;
+    } else {
+      document.getElementById('ticketInfo').innerText = "Error: ticketId missing in URL";
+    }
+
+    fetch('getTechnicians')
+      .then(r => r.json())
+      .then(users => {
+        const sel = document.getElementById('assignee');
+        sel.innerHTML = '';
+        users.forEach(u => {
+          sel.innerHTML += `<option value="${u.id}">${u.name}</option>`;
+        });
+      })
+      .catch(err => {
+        document.getElementById('message').innerHTML = '❌ Failed to load technicians: ' + err.message;
+      });
+  </script>
+</body>
+</html>
