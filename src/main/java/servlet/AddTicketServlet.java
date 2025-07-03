@@ -15,12 +15,10 @@ import org.json.JSONObject;
 
 @WebServlet("/addTicket")
 public class AddTicketServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String subject = request.getParameter("subject");
         String description = request.getParameter("description");
-        int userId = Integer.parseInt(request.getParameter("userId")); // Make sure userId is sent from frontend
+        int userId = Integer.parseInt(request.getParameter("userId"));
 
         JSONObject json = new JSONObject();
 
