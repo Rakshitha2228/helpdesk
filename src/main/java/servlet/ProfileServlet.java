@@ -12,11 +12,9 @@ import org.json.JSONObject;
 
 @WebServlet("/profile")
 public class ProfileServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
-        HttpSession session = request.getSession(false); // false means don’t create new session if none
+        HttpSession session = request.getSession(false); 
 
         try (PrintWriter out = response.getWriter()) {
             if (session != null && session.getAttribute("userId") != null) {
@@ -38,7 +36,7 @@ public class ProfileServlet extends HttpServlet {
                     out.print("{}");
                 }
             } else {
-                out.print("{}"); // no session or user not logged in
+                out.print("{}");
             }
         } catch (Exception e) {
             e.printStackTrace();
