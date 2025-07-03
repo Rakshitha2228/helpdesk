@@ -13,9 +13,6 @@ import org.json.JSONObject;
 
 @WebServlet("/adminTickets")
 public class AdminTicketsServlet extends HttpServlet {
-    
-    private static final long serialVersionUID = 1L;
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
