@@ -11,8 +11,6 @@ import java.sql.*;
 
 @WebServlet("/myTickets")
 public class MyTicketsServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json");
 
