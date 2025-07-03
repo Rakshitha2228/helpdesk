@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
@@ -34,7 +33,6 @@ public class LoginServlet extends HttpServlet {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                // ✅ Save userId in session
                 HttpSession session = request.getSession();
                 session.setAttribute("userId", rs.getInt("id"));
 
