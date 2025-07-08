@@ -30,4 +30,6 @@
 
     5. Start the server and open in your browser
 {" http://localhost:8080/helpdesksystem/ "}
+# Database Schema Diagram 
+" https://drawsql.app/teams/compant/diagrams/helpdeskdb "
     
